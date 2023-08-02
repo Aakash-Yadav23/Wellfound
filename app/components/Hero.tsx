@@ -12,11 +12,14 @@ import { MdSystemUpdateAlt } from "react-icons/md";
 import { GoPeople } from "react-icons/go";
 
 import { BsQuote } from "react-icons/bs";
-
+import Select from "./inputs/Select";
 import { SlBookOpen } from "react-icons/sl";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
-import Image from "next/image";
+import dynamic from 'next/dynamic';
+
+// ... Other imports ...
+
 import heroImage from "/public/svg/hero.jpg";
 import Input from "./inputs/Input";
 import comp1 from "/public/company_logo/comp1.svg";
@@ -40,10 +43,12 @@ import svg8 from "/public/svg/vector8.jpeg";
 import svg9 from "/public/svg/vector9.jpeg";
 import svg10 from "/public/svg/vector10.jpeg";
 import svg12 from "/public/svg/victor12.png";
+import Blog from "./blog/Blog";
+const Image = dynamic(() => import('next/image'), { ssr: false });
 
 const Hero = () => {
   return (
-    <div className="mt-[30px] relative overflow-hidden gap-[50px] w-full flex flex-col items-center ">
+    <div className="mt-[30px] mb-[100px] relative  overflow-x-hidden gap-[50px] w-full flex flex-col items-center ">
       <HeroSection />
       <Register />
 
@@ -54,11 +59,16 @@ const Hero = () => {
         leftComponent={<LeftSecond />}
         rightComponent={<RightSecond />}
       />
-         <Carousel
-        leftComponent={<LeftThird />}
-        rightComponent={<RightThird />}
-      />
-      <Review/>
+      <Carousel leftComponent={<LeftThird />} rightComponent={<RightThird />} />
+      <Review />
+      <Extra />
+      <Blog />
+    
+    <div className=" w-full z-[100]">
+
+        <SELECT />
+    </div>
+     
     </div>
   );
 };
@@ -305,55 +315,60 @@ const RightSecond = () => {
   );
 };
 
-const LeftThird=()=>{
-  return(
-
+const LeftThird = () => {
+  return (
     <div className="w-full min-h-[90vh]  items-center justify-center flex flex-col gap-3 px-10 md:py-[25px]">
-    <div className=" flex flex-col gap-[30px]">
-      <p className="font-semibold">GOT TALENT?</p>
-      <p className="text-5xl font-semibold flex flex-col gap-2 font-bold leading-[3.5rem]">
-        Why Recruiters  <span className="">love us</span>
-      </p>
+      <div className=" flex flex-col gap-[30px]">
+        <p className="font-semibold">GOT TALENT?</p>
+        <p className="text-5xl font-semibold flex flex-col gap-2 font-bold leading-[3.5rem]">
+          Why Recruiters <span className="">love us</span>
+        </p>
 
-      <ul className="flex flex-col gap-[25px]">
-        <div className="flex gap-[20px] justify-between">
-          <div className="w-[30px] flex-shrink-0">
-            <GoPeople size={30} />
+        <ul className="flex flex-col gap-[25px]">
+          <div className="flex gap-[20px] justify-between">
+            <div className="w-[30px] flex-shrink-0">
+              <GoPeople size={30} />
+            </div>
+            <p>
+              <strong> 8 million</strong> responsive and startup-ready
+              candidates, with all the information you need to vet them
+            </p>
           </div>
-          <p>
-         <strong> 8 million</strong> responsive and startup-ready candidates, with all the information you need to vet them
-          </p>
+          <li className="flex gap-[20px] justify-between">
+            <div className="w-[30px] flex-shrink-0">
+              <GiSettingsKnobs size={30} />
+            </div>
+            <p>
+              Everything you need to kickstart your recruiting - get job posts,
+              company branding, and HR tools set up within{" "}
+              <strong> 10 minutes, for free</strong>
+            </p>
+          </li>
+
+          <div className="flex gap-[20px] justify-between">
+            <div className="w-[30px] flex-shrink-0">
+              <MdSystemUpdateAlt size={30} />
+            </div>
+
+            <p>
+              A free <strong> applicant tracking system</strong>, or free
+              integration with any ATS you may already use
+            </p>
+          </div>
+        </ul>
+        <p>
+          Plus, we can do the vetting for you! With Curated, we review the
+          world's top tech talent and highlight candidates directly to you 2x a
+          week.
+        </p>
+        <div className="flex gap-2 max-w-[250px]">
+          <Button text="Learn more " secondary />
+          <Button text="Sign up now" primary />
         </div>
-        <li className="flex gap-[20px] justify-between">
-          <div className="w-[30px] flex-shrink-0">
-            <GiSettingsKnobs size={30} />
-          </div>
-          <p>
-          Everything you need to kickstart your recruiting - get job posts, company branding, and HR tools set up within <strong> 10 minutes, for free</strong>
-          </p>
-        </li>
-
-        <div className="flex gap-[20px] justify-between">
-          <div className="w-[30px] flex-shrink-0">
-            <MdSystemUpdateAlt size={30} />
-          </div>
-
-          <p>
-          A free <strong> applicant tracking system</strong>, or free integration with any ATS you may already use
-          </p>
-        </div>
-      </ul>
-      <p>
-      Plus, we can do the vetting for you! With Curated, we review the world's top tech talent and highlight candidates directly to you 2x a week.
-      </p>
-      <div className="flex gap-2 max-w-[250px]">
-        <Button text="Learn more " secondary />
-        <Button text="Sign up now" primary />
       </div>
     </div>
-  </div>
-  )
-}
+  );
+};
 
 const RightThird = () => {
   return (
@@ -361,11 +376,7 @@ const RightThird = () => {
       <Image src={svg12} className="max-w-full" />
     </div>
   );
-
-
 };
-
-
 
 const Review = () => {
   // Array of reviews
@@ -373,7 +384,7 @@ const Review = () => {
     "I got my tech job on Wellfound (AngelList Talent) 4 years ago and I'm still happy! Pays well, great culture, and unlimited PTO.",
     "I love Wellfound (AngelList Talent). I got my current job at a startup entirely through the site last year - it's super easy to use and I love the UI.",
     "I can't imagine my day to day without this platform. Life would be a lot more difficult.",
-    "Half of the offers I give are sourced from Wellfound (AngelList Talent). It's the best product for anyone looking for startup talent."
+    "Half of the offers I give are sourced from Wellfound (AngelList Talent). It's the best product for anyone looking for startup talent.",
   ];
 
   return (
@@ -382,13 +393,16 @@ const Review = () => {
       <p className="text-4xl text-center font-bold">From our users</p>
 
       {/* Use CSS Grid to create two columns */}
-      <div className="grid grid-cols-2 grow mt-[45px] gap-4 gap-[30px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 grow mt-[45px] gap-4 gap-[30px]">
         {/* Map through the reviews and render each one in a div */}
         {reviews.map((review, index) => (
-          <div key={index} className="border p-[25px] border-gray-300  rounded-md">
+          <div
+            key={index}
+            className="border p-[25px] border-gray-300  rounded-md"
+          >
             {/* Add quotation character to the review */}
 
-            <BsQuote size={60}/>
+            <BsQuote size={60} />
             <blockquote className="italic">{review}</blockquote>
           </div>
         ))}
@@ -397,5 +411,69 @@ const Review = () => {
   );
 };
 
+const Extra = () => {
+  return (
+    <div className="min-h-[50vh] flex items-center justify-center flex-col gap-[30px]">
+      <p className="text-5xl md:text-7xl font-bold">Wellfound's</p>
+      <p className="flex gap-3 text-5xl md:text-7xl font-bold">
+        <span className="text-red-600">10</span>
+        of <span className="text-red-600">10</span>
+        in <span className="text-red-600">2022</span>
+      </p>
+      <p className="text-2xl text-center">
+        10 groundbreaking teams across 10 trending industries
+      </p>
+    </div>
+  );
+};
+
+const SELECT = () => {
+  const deskJobData = [
+    { name: "UX/UI Designer" },
+    { name: "Frontend Developer" },
+    { name: "Marketing Manager" },
+    { name: "Accountant" },
+    { name: "HR Specialist" },
+    { name: "Business Analyst" },
+    { name: "Content Writer" },
+    { name: "Customer Support Representative" },
+    { name: "Project Manager" },
+    { name: "Quality Assurance Analyst" },
+    { name: "Business Development Executive" },
+    { name: "Graphic Designer" },
+    { name: "IT Support Specialist" },
+    { name: "Sales Representative" },
+    { name: "Content Marketing Manager" },
+    { name: "Financial Analyst" },
+    { name: "Administrative Assistant" },
+    { name: "Data Scientist" },
+    { name: "Social Media Manager" },
+    { name: "Full Stack Developer" },
+  ];
+
+  const remoteJobsData = [
+    { name: "Remote Web Developer" },
+    { name: "Remote Software Engineer" },
+    { name: "Remote Frontend Developer" },
+    { name: "Remote Backend Developer" },
+    { name: "Remote Full Stack Developer" },
+    { name: "Remote UI/UX Designer" },
+    { name: "Remote Data Scientist" },
+    { name: "Remote DevOps Engineer" },
+    { name: "Remote Product Manager" },
+    { name: "Remote Content Writer" },
+  ];
+
+  return (
+    <div className="flex flex-wrap w-full gap-[20px]     justify-center">
+      <Select defaultValue="Job Collections" data={deskJobData} />
+      <Select defaultValue="Remote Jobs" data={remoteJobsData} />
+      <Select defaultValue="Jobs by Location" data={remoteJobsData} />
+      <Select defaultValue="Jobs by Role" data={remoteJobsData} />
+      <Select defaultValue="Jobs by Role and Location" data={remoteJobsData} />
+
+    </div>
+  );
+};
 
 export default Hero;

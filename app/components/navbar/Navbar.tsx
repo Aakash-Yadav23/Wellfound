@@ -31,10 +31,10 @@ const Navbar = () => {
         </Link>
 
         <Link href="">
-          <Button text="Log in" type="button" primary />
+          <Button text="Log in" type="button" secondary />
         </Link>
         <Link href="">
-          <Button text="Log in" type="button" secondary />
+          <Button text="sign up" type="button" primary />
         </Link>
       </nav>
     </header>
