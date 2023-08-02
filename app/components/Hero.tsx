@@ -251,7 +251,7 @@ flex items-center
 const LeftSecond = () => {
   return (
     <div className="px-10 w-full flex items-center justify-center md:py-[25px]">
-      <Image src={svg7} className="max-w-full" />
+      <Image src={svg7} className="max-w-full" alt="LeftSecond" />
     </div>
   );
 };
@@ -373,7 +373,7 @@ const LeftThird = () => {
 const RightThird = () => {
   return (
     <div className="px-10  md:py-[25px] flex items-center justify-center w-full">
-      <Image src={svg12} className="max-w-full" />
+      <Image src={svg12} className="max-w-full" alt="image" />
     </div>
   );
 };
