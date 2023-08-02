@@ -12,19 +12,21 @@ const Navbar = () => {
 
       <nav className="hidden md:flex gap-4 items-center">
         <Link
-          href="/discover"
+          href="/role/jobs"
           className="border-b border-b-2   border-red-600 border-opacity-0 p-2 transition hover:text-red-600 hover:border-opacity-100 "
         >
           Discover
         </Link>
         <Link
-          href="/discover"
+                  href="/role/jobs"
+
           className="border-b border-b-2   border-red-600 border-opacity-0 p-2 transition hover:text-red-600 hover:border-opacity-100 "
         >
           For Job Seekers
         </Link>
         <Link
-          href="/discover"
+                 href="/role/jobs"
+
           className="border-b border-b-2   border-red-600 border-opacity-0 p-2 transition hover:text-red-600 hover:border-opacity-100 "
         >
           For Companies

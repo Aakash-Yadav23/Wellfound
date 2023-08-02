@@ -23,19 +23,21 @@ const JobTypes: React.FC<JobTypesProps> = (props) => {
       {/* Now you can use the props in your component */}
 
       <div className="flex flex-col  w-full p-[10px]  justify-center  rounded-md">
+        <div className="flex gap-[5px] flex-wrap justify-between items-center">
         <div className="flex gap-[5px] flex-wrap items-center">
           <p className="font-bold">{jobRole}</p>
           <p className="text-sm">{jobLocation}</p>
           <p className="text-sm">{jobType}</p>
           <p className="text-sm">{salary}</p>
+         </div>
 
+        <p className="min-w-fit text-sm text-gray-500">4 days ago</p>
         </div>
         <div className="flex items-center ">
           <p className="text-[14px]"> {equity}</p>
         </div>
       </div>
       <div className="min-w-fit flex gap-3 items-center">
-        <p className="min-w-fit text-sm text-gray-500">4 days ago</p>
         <Button text="save"  blue secondary />
         <Button text="apply" blue primary />
 

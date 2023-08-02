@@ -12,7 +12,7 @@ interface JobLayoutProps {
   jobLocation: string;
   jobType: string;
   companyName: string;
-  companyLogo: string;
+  companyLogo: React.ReactNode;
   companyEmployee: string;
   activeHiring: boolean;
   growingFast: boolean;
@@ -42,7 +42,7 @@ const JobLayout: React.FC<JobLayoutProps> = (props) => {
       <div className="flex flex-col gap-3">
         <div className="flex gap-[25px] items-start ">
           <div className="flex rounded-md justify-center h-[50px] w-[50px] bg-black  items-center">
-            <FaInstagram size={30} className="text-white" />
+            {companyLogo}
           </div>
           <div className="flex flex-col gap-1">
             <p className="font-semibold text-[18px]">{companyName}</p>
